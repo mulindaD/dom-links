@@ -1,19 +1,50 @@
-import {
-  Mic2, ArrowUpRight, Music2, MapPin, Zap, Mail, Globe, ExternalLink
-} from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
-function XIcon({ size = 18, className = "" }) {
+function XIcon() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.261 5.633 5.903-5.633Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
     </svg>
   );
 }
 
-function LinkedinIcon({ size = 18, className = "" }) {
+function LinkedinIcon() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  );
+}
+
+function TikTokIcon() {
+  return (
+    <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.54V6.77a4.85 4.85 0 01-1.02-.08z"/>
+    </svg>
+  );
+}
+
+function YoutubeIcon() {
+  return (
+    <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+    </svg>
+  );
+}
+
+function ZapIcon() {
+  return (
+    <svg width={17} height={17} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width={17} height={17} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="16" x="2" y="4" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
     </svg>
   );
 }
@@ -21,140 +52,159 @@ function LinkedinIcon({ size = 18, className = "" }) {
 const LINKS = [
   {
     id: "honeycoin",
-    label: "HoneyCoin",
-    sub: "African payments & stablecoin rails",
+    label: "HoneyCoin — African Payments",
+    sub: "honeycoin.app",
     href: "https://honeycoin.app",
-    icon: <Zap size={18} className="text-[#E87722]" />,
-    tag: { label: "CPO", color: "bg-orange-950 text-orange-400" },
+    icon: <ZapIcon />,
+    bg: "#E87722",
+    textColor: "#fff",
   },
   {
     id: "podcast",
     label: "Admin Access Podcast",
-    sub: "Tech trends, African fintech & banter",
+    sub: "YouTube · Co-host",
     href: "https://www.youtube.com/@AdminAccesspodcast",
-    icon: <Mic2 size={18} className="text-purple-400" />,
-    tag: { label: "Co-host", color: "bg-purple-950 text-purple-400" },
+    icon: <YoutubeIcon />,
+    bg: "#1a1a1a",
+    textColor: "#fff",
   },
   {
     id: "twitter",
-    label: "@d_mulinda on X",
-    sub: "Fintech, stablecoins & Africa tech",
+    label: "@d_mulinda",
+    sub: "X (Twitter)",
     href: "https://twitter.com/d_mulinda",
-    icon: <XIcon size={18} className="text-zinc-200" />,
-    tag: null,
+    icon: <XIcon />,
+    bg: "#1a1a1a",
+    textColor: "#fff",
   },
   {
     id: "tiktok",
-    label: "Admin Access — TikTok",
-    sub: "Short-form tech takes · 47K views",
+    label: "Admin Access on TikTok",
+    sub: "47K views · @admin.access_",
     href: "https://www.tiktok.com/@admin.access_",
-    icon: <Music2 size={18} className="text-pink-400" />,
-    tag: { label: "47K views", color: "bg-pink-950 text-pink-400" },
+    icon: <TikTokIcon />,
+    bg: "#1a1a1a",
+    textColor: "#fff",
   },
   {
     id: "linkedin",
     label: "LinkedIn",
-    sub: "Professional profile",
+    sub: "Dominic Mulinda",
     href: "https://www.linkedin.com/in/dominicmulinda",
-    icon: <LinkedinIcon size={18} className="text-blue-400" />,
-    tag: null,
+    icon: <LinkedinIcon />,
+    bg: "#1a1a1a",
+    textColor: "#fff",
   },
   {
     id: "email",
     label: "Get in touch",
     sub: "dominic@honeycoin.app",
     href: "mailto:dominic@honeycoin.app",
-    icon: <Mail size={18} className="text-zinc-400" />,
-    tag: null,
+    icon: <MailIcon />,
+    bg: "#1a1a1a",
+    textColor: "#fff",
   },
 ];
 
 export default function Page() {
   return (
-    <main className="min-h-screen flex items-start justify-center px-4 py-12">
-      <div className="w-full max-w-sm flex flex-col items-center gap-6 relative" style={{ zIndex: 1 }}>
+    <main
+      className="min-h-screen flex flex-col items-center px-5 pt-14 pb-16"
+      style={{
+        background: "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,119,34,0.12) 0%, transparent 60%), #0d0d0f",
+      }}
+    >
+      <div className="w-full max-w-[360px] flex flex-col items-center">
 
         {/* Avatar */}
-        <div className="flex flex-col items-center gap-4">
+        <div className="a1 flex flex-col items-center gap-3 mb-6">
           <div
-            className="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold text-white select-none"
+            className="w-[88px] h-[88px] rounded-full flex items-center justify-center text-[34px] font-bold text-white"
             style={{
-              background: "linear-gradient(135deg, #E87722, #c9641a)",
-              boxShadow: "0 0 0 4px rgba(232,119,34,0.25), 0 8px 32px rgba(232,119,34,0.2)",
+              background: "linear-gradient(145deg, #E87722 0%, #c9641a 100%)",
+              boxShadow: "0 0 0 3px rgba(232,119,34,0.3), 0 0 40px rgba(232,119,34,0.18)",
             }}
           >
             D
           </div>
+
           <div className="text-center">
-            <h1 className="text-2xl font-bold tracking-tight text-white">Dominic Mulinda</h1>
-            <div className="flex items-center justify-center gap-1.5 mt-1.5">
-              <MapPin size={12} className="text-zinc-500" />
-              <span className="text-sm text-zinc-400">Nairobi, Kenya</span>
+            <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">
+              Dominic Mulinda
+            </h1>
+            <div className="flex items-center justify-center gap-1 mt-1">
+              <MapPin size={11} className="text-zinc-500" />
+              <span className="text-[13px] text-zinc-500">Nairobi, Kenya</span>
             </div>
           </div>
+
+          <p className="text-[13px] text-zinc-400 text-center leading-relaxed max-w-[280px] mt-1">
+            CPO{" "}
+            <span className="text-[#E87722]">@HoneyCoin</span>
+            {" · "}Building African payment rails.
+            Co-host{" "}
+            <span className="text-zinc-300">Admin Access Podcast</span>.
+          </p>
         </div>
 
-        {/* Bio */}
-        <p className="text-sm text-zinc-400 leading-relaxed text-center max-w-xs">
-          CPO at{" "}
-          <a href="https://honeycoin.app" className="text-[#E87722] hover:underline">HoneyCoin</a>
-          {" "}— building collection & payout rails across Africa.
-          Co-host of{" "}
-          <a href="https://www.youtube.com/@AdminAccesspodcast" className="text-purple-400 hover:underline">Admin Access Podcast</a>.
-        </p>
-
         {/* Stats */}
-        <div className="w-full grid grid-cols-3 gap-2">
+        <div className="a2 w-full grid grid-cols-3 gap-2.5 mb-8">
           {[
-            { label: "YT Subscribers", value: "820+" },
-            { label: "TikTok Views", value: "47K+" },
-            { label: "African Markets", value: "12+" },
+            { v: "820+", l: "YT Subscribers" },
+            { v: "47K+", l: "TikTok Views" },
+            { v: "12+",  l: "Markets" },
           ].map((s) => (
             <div
-              key={s.label}
-              className="flex flex-col items-center rounded-xl py-3 px-2 border border-[#1f1f1f]"
-              style={{ background: "#111" }}
+              key={s.l}
+              className="flex flex-col items-center py-3.5 rounded-2xl"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
             >
-              <span className="text-lg font-bold text-white">{s.value}</span>
-              <span className="text-[10px] text-zinc-500 mt-0.5 text-center leading-tight">{s.label}</span>
+              <span className="text-[18px] font-bold text-white leading-none">{s.v}</span>
+              <span className="text-[11px] text-zinc-500 mt-1 text-center leading-tight">{s.l}</span>
             </div>
           ))}
         </div>
 
-        {/* Links */}
-        <div className="w-full flex flex-col gap-3">
-          {LINKS.map((link) => (
+        {/* Link buttons */}
+        <div className="a3 w-full flex flex-col gap-3">
+          {LINKS.map((link, i) => (
             <a
               key={link.id}
               href={link.href}
               target={link.href.startsWith("mailto") ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="link-card group"
+              className="pill-btn"
+              style={{
+                background: link.bg,
+                border: link.bg === "#1a1a1a" ? "1px solid rgba(255,255,255,0.08)" : "none",
+                animationDelay: `${0.35 + i * 0.06}s`,
+              }}
             >
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
-                style={{ background: "#1f1f1f" }}
-              >
-                {link.icon}
+              <div className="flex items-center gap-3.5">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  style={{
+                    background: link.bg === "#E87722" ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.06)",
+                  }}
+                >
+                  {link.icon}
+                </div>
+                <div>
+                  <p className="text-[14px] font-semibold text-white leading-tight">{link.label}</p>
+                  <p className="text-[11px] text-zinc-400 mt-0.5">{link.sub}</p>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-white leading-none">{link.label}</p>
-                <p className="text-xs text-zinc-500 mt-1 truncate">{link.sub}</p>
-              </div>
-              <div className="flex items-center gap-2 shrink-0">
-                {link.tag && (
-                  <span className={`tag ${link.tag.color}`}>{link.tag.label}</span>
-                )}
-                <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[#E87722] transition-colors" />
-              </div>
+              <ArrowUpRight size={15} className="text-zinc-500 shrink-0" />
             </a>
           ))}
         </div>
 
         {/* Footer */}
-        <p className="text-[11px] text-zinc-700 pt-2">
-          Built with 🛠️ by <span className="text-[#E87722]">Luthiile</span>
-        </p>
+        <div className="a4 mt-10 text-center">
+          <p className="text-[11px] text-zinc-700">
+            Built by <span className="text-[#E87722]">Luthiile</span> 🛠️
+          </p>
+        </div>
 
       </div>
     </main>
