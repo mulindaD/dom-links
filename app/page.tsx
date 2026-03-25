@@ -105,9 +105,8 @@ export default function Page() {
     >
       <div className="w-full max-w-[360px] flex flex-col items-center">
 
-        {/* ── Avatar block ─────────────────────────────────────────── */}
-        {/* Fix 3: explicit mb-5 after avatar photo, mb-3 after name block */}
-        <div className="a1 flex flex-col items-center mb-5">
+        {/* Avatar — mb-7 gives breathing room before name */}
+        <div className="a1 flex flex-col items-center mb-7">
           <div
             className="w-[88px] h-[88px] rounded-full overflow-hidden"
             style={{
@@ -126,9 +125,8 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ── Name + location ──────────────────────────────────────── */}
-        {/* Fix 2: name text-white, location text-zinc-400 (was 500) */}
-        <div className="a1 text-center mb-3">
+        {/* Name + location — mb-4 before bio */}
+        <div className="a1 text-center mb-4">
           <h1 className="text-[22px] font-bold text-gray-900 tracking-tight leading-tight">
             Dominic Mulinda
           </h1>
@@ -140,7 +138,8 @@ export default function Page() {
 
         {/* ── Bio ──────────────────────────────────────────────────── */}
         {/* Fix 2: text-zinc-300 — clearly visible on dark bg */}
-        <p className="a2 text-[13px] text-gray-600 text-center leading-relaxed max-w-[280px] mb-8">
+        {/* Bio — mb-10 before stats */}
+        <p className="a2 text-[13px] text-gray-600 text-center leading-relaxed max-w-[280px] mb-10">
           CPO{" "}
           <span className="text-[#E87722] font-medium">@HoneyCoin</span>
           {" · "}Building African payment rails.
@@ -149,7 +148,8 @@ export default function Page() {
         </p>
 
         {/* ── Stats ────────────────────────────────────────────────── */}
-        <div className="a2 w-full grid grid-cols-3 gap-2.5 mb-8">
+        {/* Stats — mb-10 before buttons */}
+        <div className="a2 w-full grid grid-cols-3 gap-2.5 mb-10">
           {[
             { v: "820+", l: "YT Subscribers" },
             { v: "47K+", l: "TikTok Views" },
@@ -186,9 +186,9 @@ export default function Page() {
               rel="noopener noreferrer"
               className="pill-btn"
             >
-              <div className="flex items-center gap-3.5">
+              <div className="flex items-center gap-4">
                 <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mr-1"
                   style={{ background: "rgba(255,255,255,0.06)" }}
                 >
                   {link.icon}
