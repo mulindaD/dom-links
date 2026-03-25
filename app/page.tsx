@@ -1,4 +1,5 @@
 import { ArrowUpRight, MapPin } from "lucide-react";
+import Image from "next/image";
 
 function XIcon() {
   return (
@@ -119,13 +120,19 @@ export default function Page() {
         {/* Avatar */}
         <div className="a1 flex flex-col items-center gap-3 mb-6">
           <div
-            className="w-[88px] h-[88px] rounded-full flex items-center justify-center text-[34px] font-bold text-white"
+            className="w-[88px] h-[88px] rounded-full overflow-hidden"
             style={{
-              background: "linear-gradient(145deg, #E87722 0%, #c9641a 100%)",
-              boxShadow: "0 0 0 3px rgba(232,119,34,0.3), 0 0 40px rgba(232,119,34,0.18)",
+              boxShadow: "0 0 0 3px rgba(232,119,34,0.35), 0 0 40px rgba(232,119,34,0.18)",
             }}
           >
-            D
+            <Image
+              src="/dom.jpg"
+              alt="Dominic Mulinda"
+              width={88}
+              height={88}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
 
           <div className="text-center">
