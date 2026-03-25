@@ -1,10 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import {
-  Twitter, Linkedin, Youtube, Globe,
-  Mic2, Briefcase, ArrowUpRight, Copy, Check,
-  Music2, MapPin, Zap
+  Twitter, Linkedin, Youtube,
+  Mic2, ArrowUpRight, Music2, MapPin, Zap, Mail
 } from "lucide-react";
 
 const LINKS = [
@@ -13,7 +9,8 @@ const LINKS = [
     label: "HoneyCoin",
     sub: "African payments & stablecoin rails",
     href: "https://honeycoin.app",
-    icon: <Zap size={18} className="text-[#E87722]" />,
+    iconColor: "text-[#E87722]",
+    iconName: "zap",
     tag: { label: "CPO", color: "bg-orange-950 text-orange-400" },
   },
   {
@@ -21,7 +18,8 @@ const LINKS = [
     label: "Admin Access Podcast",
     sub: "Tech trends, African fintech & banter",
     href: "https://www.youtube.com/@AdminAccesspodcast",
-    icon: <Mic2 size={18} className="text-purple-400" />,
+    iconColor: "text-purple-400",
+    iconName: "mic",
     tag: { label: "Co-host", color: "bg-purple-950 text-purple-400" },
   },
   {
@@ -29,15 +27,17 @@ const LINKS = [
     label: "@d_mulinda on X",
     sub: "Fintech, stablecoins & Africa tech",
     href: "https://twitter.com/d_mulinda",
-    icon: <Twitter size={18} className="text-sky-400" />,
+    iconColor: "text-sky-400",
+    iconName: "twitter",
     tag: null,
   },
   {
     id: "tiktok",
     label: "Admin Access on TikTok",
-    sub: "Short-form tech takes",
+    sub: "Short-form tech takes · 47K views",
     href: "https://www.tiktok.com/@admin.access_",
-    icon: <Music2 size={18} className="text-pink-400" />,
+    iconColor: "text-pink-400",
+    iconName: "music",
     tag: { label: "47K views", color: "bg-pink-950 text-pink-400" },
   },
   {
@@ -45,36 +45,56 @@ const LINKS = [
     label: "LinkedIn",
     sub: "Professional profile",
     href: "https://www.linkedin.com/in/dominicmulinda",
-    icon: <Linkedin size={18} className="text-blue-400" />,
+    iconColor: "text-blue-400",
+    iconName: "linkedin",
+    tag: null,
+  },
+  {
+    id: "email",
+    label: "Get in touch",
+    sub: "dominic@honeycoin.app",
+    href: "mailto:dominic@honeycoin.app",
+    iconColor: "text-zinc-400",
+    iconName: "mail",
     tag: null,
   },
 ];
 
-const STATS = [
-  { label: "YT Subscribers", value: "820+" },
-  { label: "TikTok Views", value: "47K+" },
-  { label: "African Markets", value: "12+" },
-];
+function LinkIcon({ name, className }: { name: string; className: string }) {
+  if (name === "zap")     return <Zap size={18} className={className} />;
+  if (name === "mic")     return <Mic2 size={18} className={className} />;
+  if (name === "twitter") return <Twitter size={18} className={className} />;
+  if (name === "music")   return <Music2 size={18} className={className} />;
+  if (name === "linkedin")return <Linkedin size={18} className={className} />;
+  if (name === "mail")    return <Mail size={18} className={className} />;
+  return null;
+}
 
 export default function Page() {
-  const [copied, setCopied] = useState(false);
-
-  const copyLink = () => {
-    navigator.clipboard.writeText("https://dom.mulinda.io");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
-    <main className="min-h-screen flex items-start justify-center px-4 py-12 noise">
-      {/* Glow */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#E87722]/8 blur-[120px] pointer-events-none" />
+    <main className="min-h-screen flex items-start justify-center px-4 py-12">
 
-      <div className="w-full max-w-sm flex flex-col items-center gap-6 relative z-10">
+      {/* Background glow */}
+      <div
+        style={{
+          position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)",
+          width: 600, height: 300, borderRadius: "50%",
+          background: "rgba(232,119,34,0.07)", filter: "blur(120px)",
+          pointerEvents: "none", zIndex: 0,
+        }}
+      />
+
+      <div className="w-full max-w-sm flex flex-col items-center gap-6 relative" style={{ zIndex: 1 }}>
 
         {/* Avatar */}
-        <div className="fade-up flex flex-col items-center gap-4">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#E87722] to-[#c9641a] avatar-ring flex items-center justify-center text-3xl font-bold text-white select-none shadow-2xl">
+        <div className="flex flex-col items-center gap-4">
+          <div
+            className="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold text-white select-none shadow-2xl"
+            style={{
+              background: "linear-gradient(135deg, #E87722, #c9641a)",
+              boxShadow: "0 0 0 4px rgba(232,119,34,0.25)",
+            }}
+          >
             D
           </div>
 
@@ -88,7 +108,7 @@ export default function Page() {
         </div>
 
         {/* Bio */}
-        <div className="fade-up-1 text-center">
+        <div className="text-center">
           <p className="text-sm text-zinc-400 leading-relaxed max-w-xs">
             CPO at{" "}
             <a href="https://honeycoin.app" className="text-[#E87722] hover:underline">HoneyCoin</a>
@@ -100,9 +120,17 @@ export default function Page() {
         </div>
 
         {/* Stats strip */}
-        <div className="fade-up-2 w-full grid grid-cols-3 gap-2">
-          {STATS.map((s) => (
-            <div key={s.label} className="flex flex-col items-center bg-[#111] border border-[#1f1f1f] rounded-xl py-3 px-2">
+        <div className="w-full grid grid-cols-3 gap-2">
+          {[
+            { label: "YT Subscribers", value: "820+" },
+            { label: "TikTok Views", value: "47K+" },
+            { label: "African Markets", value: "12+" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center rounded-xl py-3 px-2 border border-[#1f1f1f]"
+              style={{ background: "#111" }}
+            >
               <span className="text-lg font-bold text-white">{s.value}</span>
               <span className="text-[10px] text-zinc-500 mt-0.5 text-center leading-tight">{s.label}</span>
             </div>
@@ -110,17 +138,20 @@ export default function Page() {
         </div>
 
         {/* Links */}
-        <div className="fade-up-3 w-full flex flex-col gap-3">
+        <div className="w-full flex flex-col gap-3">
           {LINKS.map((link) => (
             <a
               key={link.id}
               href={link.href}
-              target="_blank"
+              target={link.href.startsWith("mailto") ? "_self" : "_blank"}
               rel="noopener noreferrer"
               className="link-card group"
             >
-              <div className="w-9 h-9 rounded-xl bg-[#1f1f1f] flex items-center justify-center shrink-0">
-                {link.icon}
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: "#1f1f1f" }}
+              >
+                <LinkIcon name={link.iconName} className={link.iconColor} />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-white leading-none">{link.label}</p>
@@ -136,19 +167,8 @@ export default function Page() {
           ))}
         </div>
 
-        {/* Copy link */}
-        <div className="fade-up-4 w-full">
-          <button
-            onClick={copyLink}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-[#222] bg-[#111] text-xs text-zinc-500 hover:border-[#E87722]/50 hover:text-zinc-300 transition-all"
-          >
-            {copied ? <Check size={13} className="text-green-400" /> : <Copy size={13} />}
-            {copied ? "Copied!" : "Copy profile link"}
-          </button>
-        </div>
-
         {/* Footer */}
-        <div className="fade-up-5 text-center">
+        <div className="text-center pt-2">
           <p className="text-[11px] text-zinc-700">
             Built with 🛠️ by{" "}
             <span className="text-[#E87722]">Luthiile</span>
