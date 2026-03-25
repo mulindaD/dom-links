@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Dominic Mulinda",
-  description: "CPO at HoneyCoin · Co-host Admin Access Podcast · Building African fintech infrastructure.",
+  description: "CPO at HoneyCoin · Co-host Admin Access Podcast · Building African fintech infrastructure — stablecoins & payment rails.",
   openGraph: {
     title: "Dominic Mulinda",
     description: "CPO at HoneyCoin · Co-host Admin Access Podcast",
