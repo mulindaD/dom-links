@@ -100,7 +100,7 @@ export default function Page() {
       className="min-h-screen flex flex-col items-center justify-center px-5 py-16"
       style={{
         background:
-          "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,119,34,0.12) 0%, transparent 60%), #0d0d0f",
+          "radial-gradient(ellipse 80% 60% at 50% -5%, rgba(232,119,34,0.35) 0%, #f5f3ef 55%)",
       }}
     >
       <div className="w-full max-w-[360px] flex flex-col items-center">
@@ -129,23 +129,23 @@ export default function Page() {
         {/* ── Name + location ──────────────────────────────────────── */}
         {/* Fix 2: name text-white, location text-zinc-400 (was 500) */}
         <div className="a1 text-center mb-3">
-          <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">
+          <h1 className="text-[22px] font-bold text-gray-900 tracking-tight leading-tight">
             Dominic Mulinda
           </h1>
           <div className="flex items-center justify-center gap-1 mt-1.5">
-            <MapPin size={11} className="text-zinc-400" />
-            <span className="text-[13px] text-zinc-400">Nairobi, Kenya</span>
+            <MapPin size={11} className="text-gray-400" />
+            <span className="text-[13px] text-gray-500">Nairobi, Kenya</span>
           </div>
         </div>
 
         {/* ── Bio ──────────────────────────────────────────────────── */}
         {/* Fix 2: text-zinc-300 — clearly visible on dark bg */}
-        <p className="a2 text-[13px] text-zinc-300 text-center leading-relaxed max-w-[280px] mb-8">
+        <p className="a2 text-[13px] text-gray-600 text-center leading-relaxed max-w-[280px] mb-8">
           CPO{" "}
           <span className="text-[#E87722] font-medium">@HoneyCoin</span>
           {" · "}Building African payment rails.
           Co-host{" "}
-          <span className="text-white font-medium">Admin Access Podcast</span>.
+          <span className="text-gray-900 font-medium">Admin Access Podcast</span>.
         </p>
 
         {/* ── Stats ────────────────────────────────────────────────── */}
@@ -159,14 +159,14 @@ export default function Page() {
               key={s.l}
               className="flex flex-col items-center py-3.5 rounded-2xl"
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(255,255,255,0.6)",
+                border: "1px solid rgba(0,0,0,0.07)",
               }}
             >
-              <span className="text-[18px] font-bold text-white leading-none">
+              <span className="text-[18px] font-bold text-gray-900 leading-none">
                 {s.v}
               </span>
-              <span className="text-[11px] text-zinc-400 mt-1 text-center leading-tight">
+              <span className="text-[11px] text-gray-500 mt-1 text-center leading-tight">
                 {s.l}
               </span>
             </div>
@@ -207,7 +207,7 @@ export default function Page() {
 
         {/* ── Footer ───────────────────────────────────────────────── */}
         <div className="a4 mt-10 text-center">
-          <p className="text-[11px] text-zinc-700">
+          <p className="text-[11px] text-gray-400">
             Built by <span className="text-[#E87722]">Luthiile</span> 🛠️
           </p>
         </div>
