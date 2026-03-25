@@ -1,6 +1,7 @@
 import { ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
 
+/* ── Icons ─────────────────────────────────────────────────────────── */
 function XIcon() {
   return (
     <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
@@ -8,7 +9,6 @@ function XIcon() {
     </svg>
   );
 }
-
 function LinkedinIcon() {
   return (
     <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
@@ -16,7 +16,6 @@ function LinkedinIcon() {
     </svg>
   );
 }
-
 function TikTokIcon() {
   return (
     <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
@@ -24,7 +23,6 @@ function TikTokIcon() {
     </svg>
   );
 }
-
 function YoutubeIcon() {
   return (
     <svg width={17} height={17} viewBox="0 0 24 24" fill="currentColor">
@@ -32,7 +30,6 @@ function YoutubeIcon() {
     </svg>
   );
 }
-
 function ZapIcon() {
   return (
     <svg width={17} height={17} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -40,7 +37,6 @@ function ZapIcon() {
     </svg>
   );
 }
-
 function MailIcon() {
   return (
     <svg width={17} height={17} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -50,6 +46,7 @@ function MailIcon() {
   );
 }
 
+/* ── Data ───────────────────────────────────────────────────────────── */
 const LINKS = [
   {
     id: "honeycoin",
@@ -57,8 +54,6 @@ const LINKS = [
     sub: "honeycoin.app",
     href: "https://honeycoin.app",
     icon: <ZapIcon />,
-    bg: "#E87722",
-    textColor: "#fff",
   },
   {
     id: "podcast",
@@ -66,17 +61,13 @@ const LINKS = [
     sub: "YouTube · Co-host",
     href: "https://www.youtube.com/@AdminAccesspodcast",
     icon: <YoutubeIcon />,
-    bg: "#1a1a1a",
-    textColor: "#fff",
   },
   {
     id: "twitter",
-    label: "@d_mulinda",
-    sub: "X (Twitter)",
+    label: "@d_mulinda on X",
+    sub: "Fintech, stablecoins & Africa tech",
     href: "https://twitter.com/d_mulinda",
     icon: <XIcon />,
-    bg: "#1a1a1a",
-    textColor: "#fff",
   },
   {
     id: "tiktok",
@@ -84,8 +75,6 @@ const LINKS = [
     sub: "47K views · @admin.access_",
     href: "https://www.tiktok.com/@admin.access_",
     icon: <TikTokIcon />,
-    bg: "#1a1a1a",
-    textColor: "#fff",
   },
   {
     id: "linkedin",
@@ -93,8 +82,6 @@ const LINKS = [
     sub: "Dominic Mulinda",
     href: "https://www.linkedin.com/in/dominicmulinda",
     icon: <LinkedinIcon />,
-    bg: "#1a1a1a",
-    textColor: "#fff",
   },
   {
     id: "email",
@@ -102,27 +89,30 @@ const LINKS = [
     sub: "dominic@honeycoin.app",
     href: "mailto:dominic@honeycoin.app",
     icon: <MailIcon />,
-    bg: "#1a1a1a",
-    textColor: "#fff",
   },
 ];
 
+/* ── Page ───────────────────────────────────────────────────────────── */
 export default function Page() {
   return (
+    /* Fix 1: justify-center centres content vertically in viewport */
     <main
-      className="min-h-screen flex flex-col items-center px-5 pt-14 pb-16"
+      className="min-h-screen flex flex-col items-center justify-center px-5 py-16"
       style={{
-        background: "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,119,34,0.12) 0%, transparent 60%), #0d0d0f",
+        background:
+          "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,119,34,0.12) 0%, transparent 60%), #0d0d0f",
       }}
     >
       <div className="w-full max-w-[360px] flex flex-col items-center">
 
-        {/* Avatar */}
-        <div className="a1 flex flex-col items-center gap-3 mb-6">
+        {/* ── Avatar block ─────────────────────────────────────────── */}
+        {/* Fix 3: explicit mb-5 after avatar photo, mb-3 after name block */}
+        <div className="a1 flex flex-col items-center mb-5">
           <div
             className="w-[88px] h-[88px] rounded-full overflow-hidden"
             style={{
-              boxShadow: "0 0 0 3px rgba(232,119,34,0.35), 0 0 40px rgba(232,119,34,0.18)",
+              boxShadow:
+                "0 0 0 3px rgba(232,119,34,0.35), 0 0 40px rgba(232,119,34,0.18)",
             }}
           >
             <Image
@@ -134,27 +124,31 @@ export default function Page() {
               priority
             />
           </div>
-
-          <div className="text-center">
-            <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">
-              Dominic Mulinda
-            </h1>
-            <div className="flex items-center justify-center gap-1 mt-1">
-              <MapPin size={11} className="text-zinc-500" />
-              <span className="text-[13px] text-zinc-500">Nairobi, Kenya</span>
-            </div>
-          </div>
-
-          <p className="text-[13px] text-zinc-400 text-center leading-relaxed max-w-[280px] mt-1">
-            CPO{" "}
-            <span className="text-[#E87722]">@HoneyCoin</span>
-            {" · "}Building African payment rails.
-            Co-host{" "}
-            <span className="text-zinc-300">Admin Access Podcast</span>.
-          </p>
         </div>
 
-        {/* Stats */}
+        {/* ── Name + location ──────────────────────────────────────── */}
+        {/* Fix 2: name text-white, location text-zinc-400 (was 500) */}
+        <div className="a1 text-center mb-3">
+          <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">
+            Dominic Mulinda
+          </h1>
+          <div className="flex items-center justify-center gap-1 mt-1.5">
+            <MapPin size={11} className="text-zinc-400" />
+            <span className="text-[13px] text-zinc-400">Nairobi, Kenya</span>
+          </div>
+        </div>
+
+        {/* ── Bio ──────────────────────────────────────────────────── */}
+        {/* Fix 2: text-zinc-300 — clearly visible on dark bg */}
+        <p className="a2 text-[13px] text-zinc-300 text-center leading-relaxed max-w-[280px] mb-8">
+          CPO{" "}
+          <span className="text-[#E87722] font-medium">@HoneyCoin</span>
+          {" · "}Building African payment rails.
+          Co-host{" "}
+          <span className="text-white font-medium">Admin Access Podcast</span>.
+        </p>
+
+        {/* ── Stats ────────────────────────────────────────────────── */}
         <div className="a2 w-full grid grid-cols-3 gap-2.5 mb-8">
           {[
             { v: "820+", l: "YT Subscribers" },
@@ -164,49 +158,54 @@ export default function Page() {
             <div
               key={s.l}
               className="flex flex-col items-center py-3.5 rounded-2xl"
-              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}
             >
-              <span className="text-[18px] font-bold text-white leading-none">{s.v}</span>
-              <span className="text-[11px] text-zinc-500 mt-1 text-center leading-tight">{s.l}</span>
+              <span className="text-[18px] font-bold text-white leading-none">
+                {s.v}
+              </span>
+              <span className="text-[11px] text-zinc-400 mt-1 text-center leading-tight">
+                {s.l}
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Link buttons */}
-        <div className="a3 w-full flex flex-col gap-3">
-          {LINKS.map((link, i) => (
+        {/* ── Link buttons ─────────────────────────────────────────── */}
+        {/* Fix 3: gap-4 = 16px between buttons
+            Fix 4: all buttons dark by default, orange only on :active (CSS)
+            No bg prop needed — all use .pill-btn base style */}
+        <div className="a3 w-full flex flex-col gap-4">
+          {LINKS.map((link) => (
             <a
               key={link.id}
               href={link.href}
               target={link.href.startsWith("mailto") ? "_self" : "_blank"}
               rel="noopener noreferrer"
               className="pill-btn"
-              style={{
-                background: link.bg,
-                border: link.bg === "#1a1a1a" ? "1px solid rgba(255,255,255,0.08)" : "none",
-                animationDelay: `${0.35 + i * 0.06}s`,
-              }}
             >
               <div className="flex items-center gap-3.5">
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: link.bg === "#E87722" ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.06)",
-                  }}
+                  style={{ background: "rgba(255,255,255,0.06)" }}
                 >
                   {link.icon}
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold text-white leading-tight">{link.label}</p>
-                  <p className="text-[11px] text-zinc-400 mt-0.5">{link.sub}</p>
+                  <p className="text-[14px] font-semibold text-white leading-tight">
+                    {link.label}
+                  </p>
+                  <p className="text-[12px] text-zinc-300 mt-0.5">{link.sub}</p>
                 </div>
               </div>
-              <ArrowUpRight size={15} className="text-zinc-500 shrink-0" />
+              <ArrowUpRight size={15} className="text-zinc-300 shrink-0" />
             </a>
           ))}
         </div>
 
-        {/* Footer */}
+        {/* ── Footer ───────────────────────────────────────────────── */}
         <div className="a4 mt-10 text-center">
           <p className="text-[11px] text-zinc-700">
             Built by <span className="text-[#E87722]">Luthiile</span> 🛠️
