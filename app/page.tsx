@@ -97,16 +97,29 @@ export default function Page() {
   return (
     /* Fix 1: justify-center centres content vertically in viewport */
     <main
-      className="min-h-screen flex flex-col items-center justify-center px-5 py-16"
+      className="min-h-screen flex flex-col items-center justify-center px-5 py-16 relative overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse 80% 60% at 50% -5%, rgba(232,119,34,0.35) 0%, #f5f3ef 55%)",
+          "radial-gradient(ellipse 80% 60% at 50% -5%, rgba(232,119,34,0.32) 0%, #f5f3ef 55%)",
       }}
     >
-      <div className="w-full max-w-[360px] flex flex-col items-center">
+      {/* Subtle dot grid pattern overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div className="w-full max-w-[360px] flex flex-col items-center relative" style={{ zIndex: 1 }}>
 
-        {/* Avatar — mb-7 gives breathing room before name */}
-        <div className="a1 flex flex-col items-center mb-7">
+        {/* Avatar — fades in first (a0), mb-7 breathing room */}
+        <div className="a0 flex flex-col items-center mb-7">
           <div
             className="w-[88px] h-[88px] rounded-full overflow-hidden"
             style={{
