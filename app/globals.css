@@ -4,14 +4,34 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { scroll-behavior: smooth; }
+
 body {
   min-height: 100vh;
-  background: #0d0d0f;
+  background: #0c0c0e;
+  color: #f5f0eb;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── Load animations ───────────────────────────────────────────────── */
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Animations ────────────────────────────────────────────────────── */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(24px); clip-path: inset(0 0 100% 0); }
+  to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 0% 0); }
+}
+
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -20,43 +40,42 @@ body {
   to   { opacity: 1; }
 }
 
-/* Avatar fades in first, everything else staggers up */
-.a0 { animation: fadeIn  0.6s cubic-bezier(0.22,1,0.36,1) 0.0s  both; }
-.a1 { animation: fadeUp  0.6s cubic-bezier(0.22,1,0.36,1) 0.15s both; }
-.a2 { animation: fadeUp  0.6s cubic-bezier(0.22,1,0.36,1) 0.28s both; }
-.a3 { animation: fadeUp  0.6s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
-.a4 { animation: fadeUp  0.6s cubic-bezier(0.22,1,0.36,1) 0.48s both; }
-.a5 { animation: fadeUp  0.6s cubic-bezier(0.22,1,0.36,1) 0.58s both; }
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
 
-/* Base pill button — dark card, no fill */
-.pill-btn {
+.anim-name    { animation: reveal  0.8s cubic-bezier(0.16,1,0.3,1) 0.1s  both; }
+.anim-sub     { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
+.anim-bio     { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.5s  both; }
+.anim-stats   { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.6s  both; }
+.anim-links   { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.72s both; }
+.anim-footer  { animation: fadeIn  0.6s ease 1.0s both; }
+.anim-line    { animation: lineGrow 0.9s cubic-bezier(0.16,1,0.3,1) 0.9s both; transform-origin: left; }
+
+/* ── Link buttons ──────────────────────────────────────────────────── */
+.link-btn {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 16px 20px;
-  border-radius: 16px;
+  gap: 14px;
+  padding: 15px 18px;
+  border-radius: 12px;
   text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-  font-size: 15px;
-  background: #1a1a1a;
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
-  cursor: pointer;
+  color: #f5f0eb;
+  background: rgba(245,240,235,0.04);
+  border: 1px solid rgba(245,240,235,0.08);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover: subtle orange border + slightly lighter bg */
-.pill-btn:hover {
-  background: #222;
-  border-color: rgba(232,119,34,0.5);
-  transform: scale(0.99);
+.link-btn:hover {
+  background: rgba(245,240,235,0.08);
+  border-color: rgba(232,119,34,0.4);
+  transform: translateX(4px);
 }
 
-/* Active / tap: flash orange fill */
-.pill-btn:active {
-  background: #E87722;
-  border-color: #E87722;
-  transform: scale(0.97);
+.link-btn:active {
+  background: rgba(232,119,34,0.12);
+  border-color: rgba(232,119,34,0.6);
+  transform: translateX(2px);
 }
