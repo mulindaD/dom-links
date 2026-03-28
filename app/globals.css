@@ -2,80 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FAFAF8;
+  --ink: #0D0D0D;
+  --ink-muted: #6B6B6B;
+  --ink-faint: #B8B8B0;
+  --accent: #E87722;
+  --surface: #F0EFE9;
+  --border: #E2E1DB;
+}
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
-  background: #0c0c0e;
-  color: #f5f0eb;
+  background: var(--bg);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Grain texture overlay */
-body::before {
+/* Subtle grain */
+body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
   pointer-events: none;
-  z-index: 0;
+  z-index: 100;
 }
 
-/* ── Animations ────────────────────────────────────────────────────── */
-@keyframes reveal {
-  from { opacity: 0; transform: translateY(24px); clip-path: inset(0 0 100% 0); }
-  to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 0% 0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
+/* ── Animations ─────────────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
-@keyframes lineGrow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+@keyframes expandWidth {
+  from { width: 0; }
+  to   { width: 100%; }
 }
 
-.anim-name    { animation: reveal  0.8s cubic-bezier(0.16,1,0.3,1) 0.1s  both; }
-.anim-sub     { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
-.anim-bio     { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.5s  both; }
-.anim-stats   { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.6s  both; }
-.anim-links   { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) 0.72s both; }
-.anim-footer  { animation: fadeIn  0.6s ease 1.0s both; }
-.anim-line    { animation: lineGrow 0.9s cubic-bezier(0.16,1,0.3,1) 0.9s both; transform-origin: left; }
+.a0 { animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.0s  both; }
+.a1 { animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+.a2 { animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.28s both; }
+.a3 { animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s  both; }
+.a4 { animation: fadeIn  0.6s ease 0.55s both; }
 
-/* ── Link buttons ──────────────────────────────────────────────────── */
-.link-btn {
+/* ── Link rows ──────────────────────────────────────────────────────── */
+.link-row {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 15px 18px;
-  border-radius: 12px;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
   text-decoration: none;
-  color: #f5f0eb;
-  background: rgba(245,240,235,0.04);
-  border: 1px solid rgba(245,240,235,0.08);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-  -webkit-tap-highlight-color: transparent;
+  color: var(--ink);
+  transition: color 0.15s ease;
+  cursor: pointer;
 }
-
-.link-btn:hover {
-  background: rgba(245,240,235,0.08);
-  border-color: rgba(232,119,34,0.4);
-  transform: translateX(4px);
-}
-
-.link-btn:active {
-  background: rgba(232,119,34,0.12);
-  border-color: rgba(232,119,34,0.6);
-  transform: translateX(2px);
-}
+.link-row:first-child { border-top: 1px solid var(--border); }
+.link-row:hover { color: var(--accent); }
+.link-row:hover .link-arrow { transform: translate(3px, -3px); color: var(--accent); }
+.link-arrow { transition: transform 0.2s ease, color 0.15s ease; color: var(--ink-faint); }

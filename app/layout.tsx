@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { DM_Sans, Lora } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["400", "500", "700", "800", "900"],
   variable: "--font-display",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const lora = Lora({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
   variable: "--font-body",
 });
 
 export const metadata: Metadata = {
   title: "Dominic Mulinda",
-  description: "CPO at HoneyCoin · Co-host Admin Access Podcast · Building African fintech infrastructure.",
+  description: "CPO at HoneyCoin · Co-host Admin Access Podcast · Building African payment infrastructure.",
   openGraph: {
     title: "Dominic Mulinda",
     description: "CPO at HoneyCoin · Building African payment rails.",
@@ -26,8 +27,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${jakarta.variable}`}>
-      <body style={{ fontFamily: "var(--font-body), sans-serif" }}>{children}</body>
+    <html lang="en" className={`${dmSans.variable} ${lora.variable}`}>
+      <body style={{ fontFamily: "var(--font-display), sans-serif" }}>{children}</body>
     </html>
   );
 }
